@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/AppTheme"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/addEventLayoutHeader"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        style="@style/AppTheme"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/etEventDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etEventDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/event_date"
+        android:inputType="datetime"
+        android:drawableStart="@drawable/ic_date_range_blue_24dp"
+        android:drawablePadding="10dp"
+        android:layout_marginHorizontal="25dp"
+        app:layout_constraintBottom_toTopOf="@id/etPlaceName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="false"
+        />
+
+    <EditText
+        android:id="@+id/etPlaceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:drawableStart="@drawable/ic_local_dining_blue_24dp"
+        android:drawablePadding="10dp"
+        android:hint="@string/place_name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etLocation"
+
+        />
+
+    <EditText
+        android:id="@+id/etLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:drawableStart="@drawable/ic_location_on_blue_24dp"
+        android:drawablePadding="10dp"
+        android:hint="@string/location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etEventDesc"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/etEventDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:drawableStart="@drawable/ic_chat_blue_24dp"
+        android:drawablePadding="10dp"
+        android:hint="@string/event_desc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etParticipants"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/etParticipants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:drawableStart="@drawable/ic_people_blue_24dp"
+        android:drawablePadding="10dp"
+        android:hint="@string/event_desc"
+        app:layout_constraintBottom_toTopOf="@id/btnAddEvent"
+        android:visibility="invisible"
+        android:layout_marginBottom="30dp"
+        android:inputType="textMultiLine"
+        android:focusable="false"
+        android:clickable="false"
+        android:longClickable="false"/>
+
+    <Button
+        android:id="@+id/btnAddEvent"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="50dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/add"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDeleteEvent"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="50dp"
+        android:background="@android:color/holo_red_light"
+        android:text="@string/delete"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnLeftEvent"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="50dp"
+        android:background="@android:color/holo_red_light"
+        android:text="@string/left"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnJoinEvent"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="50dp"
+        android:background="@android:color/holo_green_light"
+        android:text="@string/join"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
