@@ -17,6 +17,6 @@ class RequestInterceptor(private val apiKey: String) :
             )
             .addHeader("Content-Type", "application/json")
             .build()
-        return chain.proceed(newRequest)
+        return chain.proceed(newRequest) //todo add non response error (SocketTimeoutException)
     }
 }

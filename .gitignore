@@ -12,3 +12,5 @@
 /captures
 .externalNativeBuild
 .cxx
+/app/src/androidTest/java/pl/
+/app/src/test/java/pl/

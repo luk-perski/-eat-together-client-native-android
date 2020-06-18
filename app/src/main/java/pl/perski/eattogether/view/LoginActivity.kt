@@ -13,6 +13,7 @@ import pl.perski.eattogether.R
 import pl.perski.eattogether.model.AccountModel
 import pl.perski.eattogether.utils.*
 import pl.perski.eattogether.viewModel.LoginViewModel
+
 //todo add field validation
 class LoginActivity : AppCompatActivity() {
 

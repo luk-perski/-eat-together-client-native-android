@@ -44,15 +44,14 @@ class MainActivity : AppCompatActivity() {
         if (!sharedPrefHelper.checkIfExists(SharedPrefHelper.TOKEN)) {
             finish()
             startActivity(Intent(this, LoginActivity::class.java))
+        } else {
+            viewModel = ViewModelProvider(this, MainViewModelFactory(sharedPrefHelper.token!!))
+                .get(MainViewModel::class.java)
+            bindUIData()
+            bindUIGestures()
+            setupRecyclerView()
+            viewModel.getEventsData()
         }
-
-
-        viewModel = ViewModelProvider(this, MainViewModelFactory(sharedPrefHelper.token!!))
-            .get(MainViewModel::class.java)
-        bindUIData()
-        bindUIGestures()
-        setupRecyclerView()
-        viewModel.getEventsData()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
