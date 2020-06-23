@@ -74,9 +74,11 @@ class RecyclerAdapter(private val events: List<EventModel>) :
                 view.title.setTextColor(Color.parseColor("#FF4CAF50"))
             }
             this.event = event
+            val firstInitial = SimpleDateFormat("EEEE").format(event.date)[0]
+            val secondInitial = SimpleDateFormat("EEEE").format(event.date)[1]
             view.title.text = "${event.placeName} (${SimpleDateFormat(format).format(event.date)})"
             view.subtitle.text = "Added by ${event.creatorName}"
-            view.eventAvatar.setInitials("A B") //todo
+            view.eventAvatar.setInitials(String.format("%s %s", firstInitial, secondInitial))
         }
     }
 }
