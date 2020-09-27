@@ -9,6 +9,8 @@ data class EventModel(
     val date: Date,
     val placeName: String,
     val placeLocation: String,
+    val locationLongitude: Double,
+    val locationLatitude: Double,
     val description: String? = null,
     val creatorName: String? = null,
     val callerJoin: Boolean? = null,

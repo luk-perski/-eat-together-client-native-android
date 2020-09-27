@@ -8,5 +8,6 @@ data class UserModel(
     val description: String,
     val userLocationLongitude: Double,
     val userLocationLatitude: Double,
-    val userLocationAddress: String
+    val userLocationAddress: String,
+    val distanceRange: Double
 )

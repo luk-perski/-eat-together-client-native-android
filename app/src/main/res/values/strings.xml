@@ -40,4 +40,16 @@
     <string name="update">Update</string>
     <string name="update_user_header">Edit your account info</string>
     <string name="update_user_toolbar">User</string>
+    <string name="placeistanceRange">Place distance range: </string>
+    <string name="kilomiters_shourcut">km</string>
+
+    <string-array name="distance_array">
+        <item>0.2</item>
+        <item>0.5</item>
+        <item>1</item>
+        <item>1.5</item>
+        <item>2</item>
+        <item>2.5</item>
+        <item>3</item>
+    </string-array>
 </resources>

@@ -20,6 +20,7 @@ import pl.perski.eattogether.model.EventModel
 import pl.perski.eattogether.utils.*
 import pl.perski.eattogether.viewModel.EventViewModel
 import pl.perski.eattogether.viewModel.factory.EventViewModelFactory
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.*
@@ -41,6 +42,7 @@ class EventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
     private lateinit var viewModel: EventViewModel
     private var eventId: Int = -1
     private var activityMode: Int = -1
+    private val formatter: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
 
     private var day = 0
     private var month: Int = 0
@@ -95,10 +97,12 @@ class EventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         val disposableAddEvent = btnAddEvent.clicks().observeOnMainThread().subscribe {
             viewModel.addEvent(
                 EventModel(
-                    date = eventDate,
+                    date = Date(),
                     placeName = etPlaceName.text.toString(),
+                    description = etEventDesc.text.toString(),
                     placeLocation = etLocation.text.toString(),
-                    description = etEventDesc.text.toString()
+                    locationLongitude = 52.408756,
+                    locationLatitude = 16.920957
                 )
             )
         }
@@ -166,7 +170,7 @@ class EventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                 etParticipants.visibility = View.VISIBLE
 
                 etPlaceName.setText(event.placeName)
-                etEventDate.setText(event.date.toString())
+                etEventDate.setText(formatter.format(event.date))
                 etLocation.setText(event.placeLocation)
                 etEventDesc.setText(event.description)
                 etParticipants.setText(event.participants)
@@ -205,6 +209,6 @@ class EventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         myMinute = minute
         val dateTime = LocalDateTime.of(myYear, myMonth, myDay, myHour, myMinute)
         eventDate = Date.from(dateTime.atZone(ZoneId.systemDefault()).toInstant())
-        etEventDate.setText("$myYear-$myMonth-$myDay $myHour:$myMinute")
+        etEventDate.setText("$myYear-$myMonth-$myDay $myHour:${String.format("%02d", myMinute)}")
     }
 }

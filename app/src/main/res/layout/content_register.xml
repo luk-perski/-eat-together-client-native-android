@@ -30,9 +30,9 @@
         android:layout_marginBottom="2dp"
         android:drawableStart="@drawable/ic_email_blue_24dp"
         android:drawablePadding="10dp"
-        android:visibility="invisible"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/etPlaceName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -45,9 +45,9 @@
         android:layout_marginBottom="50dp"
         android:drawableStart="@drawable/ic_lock_blue_24dp"
         android:drawablePadding="10dp"
-        android:visibility="invisible"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/etFirstName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -85,34 +85,35 @@
     <LinearLayout
         android:id="@+id/localizationGrid"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="25dp"
-        android:layout_marginBottom="2dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:layout_constraintBottom_toTopOf="@id/etCompany"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/spinDistanceGrid"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent">
 
         <HorizontalScrollView
             android:id="@+id/rlEmail"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:scrollHorizontally="true">
-    <EditText
-        android:id="@+id/etLocalization"
-        android:enabled="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_location_on_blue_24dp"
-        android:drawablePadding="10dp"
-        android:hint="@string/localizationHint"
-        android:scrollHorizontally="true"
-        android:maxLines="1"
-        android:focusable="false"
-        android:singleLine="true"
-        tools:ignore="ScrollViewSize" />
+
+            <EditText
+                android:id="@+id/etLocalization"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_location_on_blue_24dp"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:focusable="false"
+                android:hint="@string/localizationHint"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                tools:ignore="ScrollViewSize" />
         </HorizontalScrollView>
 
         <ImageButton
@@ -121,6 +122,48 @@
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_location_searching_blue_24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/spinDistanceGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/etCompany"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:src="@drawable/ic_account_box_blue_24dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:text="@string/placeistanceRange" />
+
+        <Spinner
+            android:id="@+id/spinDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/etCompany"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:text="@string/kilomiters_shourcut" />
+
     </LinearLayout>
 
     <EditText
@@ -158,9 +201,9 @@
         android:layout_marginHorizontal="25dp"
         android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
-        android:visibility="invisible"
         android:text="@string/sign_up"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -173,9 +216,9 @@
         android:layout_marginHorizontal="25dp"
         android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
-        android:visibility="invisible"
         android:text="@string/update"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

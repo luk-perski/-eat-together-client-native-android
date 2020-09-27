@@ -3,6 +3,8 @@ package pl.perski.eattogether.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
@@ -18,8 +20,9 @@ import pl.perski.eattogether.model.AddAccountModel
 import pl.perski.eattogether.model.UserModel
 import pl.perski.eattogether.utils.*
 import pl.perski.eattogether.viewModel.RegisterViewModel
+
 //todo add field validation
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     companion object {
         const val ACTIVITY_MODE_NAME = "ACTIVITY_MODE"
@@ -32,9 +35,11 @@ class RegisterActivity : AppCompatActivity() {
     private val compositeDisposable = CompositeDisposable()
     private val viewModel by lazy { ViewModelProvider(this).get(RegisterViewModel::class.java) }
     private lateinit var sharedPrefHelper: SharedPrefHelper
+    private lateinit var spinDistanceAdapter: ArrayAdapter<CharSequence>
     private var longitude: Double = 0.0
     private var latitude: Double = 0.0
     private var activityMode: Int = -1
+    private var defaultDistance = 1.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +58,16 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setControls(activityMode: Int) {
+        spinDistanceAdapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.distance_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinDistance.adapter = adapter
+        }
         if (activityMode == REGISTER_CODE) {
             toolbar.title = getString(R.string.app_name)
             etEmail.visibility = View.VISIBLE
@@ -64,6 +79,7 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.getUser(sharedPrefHelper.token!!)
             btnUpdateUser.visibility = View.VISIBLE
         }
+
     }
 
     override fun onDestroy() {
@@ -87,6 +103,12 @@ class RegisterActivity : AppCompatActivity() {
         etCompany.setText(userModel.companyName)
         etLocalization.setText(userModel.userLocationAddress)
         etDescription.setText(userModel.description)
+        var spinDistanceDefaultSelection = 2
+        spinDistanceDefaultSelection = try {
+            spinDistanceAdapter.getPosition(userModel.distanceRange.toString())
+        } finally {
+            spinDistance.setSelection(spinDistanceDefaultSelection)
+        }
     }
 
     private fun goToApplication(tokenHeader: String) {
@@ -108,7 +130,8 @@ class RegisterActivity : AppCompatActivity() {
                 userLocationLongitude = longitude,
                 userLocationAddress = etLocalization.text.toString(),
                 companyName = etCompany.text.toString(),
-                description = etDescription.text.toString()
+                description = etDescription.text.toString(),
+                distanceRange = defaultDistance
             )
             val accountModel =
                 AccountModel(
@@ -130,7 +153,8 @@ class RegisterActivity : AppCompatActivity() {
                 userLocationLongitude = longitude,
                 userLocationAddress = etLocalization.text.toString(),
                 companyName = etCompany.text.toString(),
-                description = etDescription.text.toString()
+                description = etDescription.text.toString(),
+                distanceRange = defaultDistance
             )
             viewModel.update(userModel, sharedPrefHelper.token!!)
         }
@@ -163,6 +187,18 @@ class RegisterActivity : AppCompatActivity() {
         }
         setResult(RESULT_OK, data)
         finish()
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        try {
+            defaultDistance = p0?.getItemAtPosition(p2).toString().toDouble()
+        } catch (e: NumberFormatException) {
+            print("Error during getting distance value.")
+        }
     }
 
 }
