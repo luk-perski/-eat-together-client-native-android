@@ -97,7 +97,7 @@ class EventActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         val disposableAddEvent = btnAddEvent.clicks().observeOnMainThread().subscribe {
             viewModel.addEvent(
                 EventModel(
-                    date = Date(),
+                    date = eventDate,
                     placeName = etPlaceName.text.toString(),
                     description = etEventDesc.text.toString(),
                     placeLocation = etLocation.text.toString(),
