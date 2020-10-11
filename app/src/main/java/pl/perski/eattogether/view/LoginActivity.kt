@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
     private val viewModel by lazy { ViewModelProvider(this).get(LoginViewModel::class.java) }
 
     private val compositeDisposable = CompositeDisposable()
-    lateinit var sharedPrefHelper: SharedPrefHelper
+    private lateinit var sharedPrefHelper: SharedPrefHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

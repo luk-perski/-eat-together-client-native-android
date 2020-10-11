@@ -20,9 +20,7 @@ import pl.perski.eattogether.utils.*
 import pl.perski.eattogether.viewModel.MainViewModel
 import pl.perski.eattogether.viewModel.factory.MainViewModelFactory
 
-
 class MainActivity : AppCompatActivity() {
-
 
     companion object {
         const val EVENT_ACTIVITY_RESULT = 10
@@ -87,9 +85,10 @@ class MainActivity : AppCompatActivity() {
                 data.apply {
                     showSnackBar(getStringExtra(EventActivity.EVENT_RESULT_MESSAGE)!!)
                 }
-            } else {
-                // todo
             }
+//            else {
+//                 todo
+//            }
         } else if (requestCode == UPDATE_USER_ACTIVITY_RESULT) {
             if (resultCode == Activity.RESULT_OK && data != null) {
                 data.apply {

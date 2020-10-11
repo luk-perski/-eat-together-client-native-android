@@ -11,10 +11,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class ApiUtils {
     companion object {
-//        const val BASE_URL: String = "http://192.168.43.171:2501/api/v1/"
-//        const val BASE_URL: String = "http://192.168.1.14:2501/api/v1/"
-        const val BASE_URL: String = "http://192.168.0.13:2501/api/v1/"
-//        const val BASE_URL: String = "http://10.0.2.2:2501/api/v1/"
+        const val BASE_URL: String = "http://10.0.2.2:2501/api/v1/"
     }
 
     private var gson = GsonBuilder()
